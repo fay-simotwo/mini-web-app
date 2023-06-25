@@ -14,9 +14,10 @@ fetch('http://localhost:3000/characters')
       animalNameButton.textContent = character.name;
       animalNameButton.classList.add('animal-name');
 
-      
+            // Append the button to the animal list
       animalList.appendChild(animalNameButton);
 
+            // Add click event listener to each animal name button
       animalNameButton.addEventListener('click', () => {
         if (currentAnimal !== character.id) {
           currentAnimal = character.id;
