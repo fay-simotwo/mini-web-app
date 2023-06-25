@@ -14,4 +14,50 @@ body {
     display: flex;
     justify-content: center;
   }
+   /* Style for each animal container */
+   .animal-container {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  /* Style for buttons */
+  button {
+    background-color: #eaeaea;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+    width: 150px;
+  }
+  
+  /* Style for button hover effect */
+  button:hover {
+    background-color: #d5d5d5;
+  }
+  
+  /* Remove outline on button focus */
+  button:focus {
+    outline: none;
+  }
+  
+  /* Style for the animal details container */
+  .animal-details-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Style for the animal image in the details container */
+  .animal-details-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Style for the vote count */
+  .vote-count {
+    font-weight: bold;
+  }
   
