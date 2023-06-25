@@ -2,3 +2,10 @@
 body {
     background-color: #adcdb0;
   }
+   /* Center align the heading and apply font styles */
+   h1 {
+    text-align: center;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  
