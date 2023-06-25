@@ -39,6 +39,7 @@ fetch('http://localhost:3000/characters')
               let animalNameHeader = document.createElement('h2');
               animalNameHeader.textContent = animal.name;
 
+              // Create vote count element and set it to zero
               let voteCount = document.createElement('span');
               voteCount.classList.add('vote-count');
               voteCount.textContent = '0'; // Set votes to zero
