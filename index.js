@@ -28,6 +28,7 @@ fetch('http://localhost:3000/characters')
             // Clear the animal details container
               animalDetails.innerHTML = '';
 
+              // Create elements for the animal details
               let animalDetailsContainer = document.createElement('div');
               animalDetailsContainer.classList.add('animal-details-container');
 
