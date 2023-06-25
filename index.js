@@ -44,6 +44,7 @@ fetch('http://localhost:3000/characters')
               voteCount.classList.add('vote-count');
               voteCount.textContent = '0'; // Set votes to zero
 
+              // Create vote button
               let voteButton = document.createElement('button');
               voteButton.textContent = 'VOTE';
               voteButton.classList.add('vote-button');
