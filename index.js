@@ -21,9 +21,11 @@ fetch('http://localhost:3000/characters')
       animalNameButton.addEventListener('click', () => {
         if (currentAnimal !== character.id) {
           currentAnimal = character.id;
+            // Fetch the details of the clicked animal from the server
           fetch(`http://localhost:3000/characters/${character.id}`)
             .then(response => response.json())
             .then(animal => {
+            // Clear the animal details container
               animalDetails.innerHTML = '';
 
               let animalDetailsContainer = document.createElement('div');
