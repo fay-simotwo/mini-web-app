@@ -9,3 +9,9 @@ body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
   
+   /* Center align the animal list */
+   #animal-list {
+    display: flex;
+    justify-content: center;
+  }
+  
