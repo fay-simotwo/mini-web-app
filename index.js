@@ -60,14 +60,14 @@ fetch('http://localhost:3000/characters')
               animalDetailsContainer.appendChild(voteCount);
               animalDetailsContainer.appendChild(voteButton);
               animalDetailsContainer.appendChild(resetButton);
+            // Append the animal details container to the animal details section
               animalDetails.appendChild(animalDetailsContainer);
 
-           // Append the animal details container to the animal details section
+            // Add click event listener to the vote button
               voteButton.addEventListener('click', () => {
                 voteCount.textContent = parseInt(voteCount.textContent) + 1;
               });
 
-          // Add click event listener to the vote button
               resetButton.addEventListener('click', () => {
                 voteCount.textContent = '0';
               });
