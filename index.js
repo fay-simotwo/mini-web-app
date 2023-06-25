@@ -67,6 +67,7 @@ fetch('http://localhost:3000/characters')
                 voteCount.textContent = parseInt(voteCount.textContent) + 1;
               });
 
+          // Add click event listener to the vote button
               resetButton.addEventListener('click', () => {
                 voteCount.textContent = '0';
               });
