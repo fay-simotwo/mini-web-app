@@ -78,8 +78,10 @@ fetch('http://localhost:3000/characters')
       });
     }
   });
-
+// Add click event listener to the reset button
 resetButton.addEventListener('click', () => {
+
+ // Get all vote count elements and set their text content to zero
   let voteCounts = document.getElementsByClassName('vote-count');
   for (let i = 0; i < voteCounts.length; i++) {
     voteCounts[i].textContent = '0';
