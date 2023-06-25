@@ -49,6 +49,7 @@ fetch('http://localhost:3000/characters')
               voteButton.textContent = 'VOTE';
               voteButton.classList.add('vote-button');
 
+             // Create reset button
               let resetButton = document.createElement('button');
               resetButton.textContent = 'RESET';
               resetButton.classList.add('reset-button');
