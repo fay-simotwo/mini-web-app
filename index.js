@@ -54,6 +54,7 @@ fetch('http://localhost:3000/characters')
               resetButton.textContent = 'RESET';
               resetButton.classList.add('reset-button');
 
+            // Append elements to the animal details container
               animalDetailsContainer.appendChild(animalImage);
               animalDetailsContainer.appendChild(animalNameHeader);
               animalDetailsContainer.appendChild(voteCount);
