@@ -9,23 +9,23 @@ fetch('http://localhost:3000/characters')
   .then(response => response.json())
   .then(characters => {
     for (const character of characters) {
-            // Create a button for each character
+      // Create a button for each character
       let animalNameButton = document.createElement('button');
       animalNameButton.textContent = character.name;
       animalNameButton.classList.add('animal-name');
 
-            // Append the button to the animal list
+      // Append the button to the animal list
       animalList.appendChild(animalNameButton);
 
-            // Add click event listener to each animal name button
+      // Add click event listener to each animal name button
       animalNameButton.addEventListener('click', () => {
         if (currentAnimal !== character.id) {
           currentAnimal = character.id;
-            // Fetch the details of the clicked animal from the server
+          // Fetch the details of the clicked animal from the server
           fetch(`http://localhost:3000/characters/${character.id}`)
             .then(response => response.json())
             .then(animal => {
-            // Clear the animal details container
+              // Clear the animal details container
               animalDetails.innerHTML = '';
 
               // Create elements for the animal details
@@ -39,51 +39,91 @@ fetch('http://localhost:3000/characters')
               let animalNameHeader = document.createElement('h2');
               animalNameHeader.textContent = animal.name;
 
-              // Create vote count element and set it to zero
+              // Create vote count element and set it to the value from the server
               let voteCount = document.createElement('span');
               voteCount.classList.add('vote-count');
-              voteCount.textContent = '0'; // Set votes to zero
+              voteCount.textContent = animal.votes; // Set votes to the value from the server
 
               // Create vote button
               let voteButton = document.createElement('button');
               voteButton.textContent = 'VOTE';
               voteButton.classList.add('vote-button');
 
-             // Create reset button
+              // Create reset button
               let resetButton = document.createElement('button');
               resetButton.textContent = 'RESET';
               resetButton.classList.add('reset-button');
 
-            // Append elements to the animal details container
+              // Append elements to the animal details container
               animalDetailsContainer.appendChild(animalImage);
               animalDetailsContainer.appendChild(animalNameHeader);
               animalDetailsContainer.appendChild(voteCount);
               animalDetailsContainer.appendChild(voteButton);
               animalDetailsContainer.appendChild(resetButton);
-            // Append the animal details container to the animal details section
+              // Append the animal details container to the animal details section
               animalDetails.appendChild(animalDetailsContainer);
 
-            // Add click event listener to the vote button
+              // Add click event listener to the vote button
               voteButton.addEventListener('click', () => {
-                voteCount.textContent = parseInt(voteCount.textContent) + 1;
+                // Update the vote count on the server
+                fetch(`http://localhost:3000/characters/${character.id}`, {
+                  method: 'PATCH',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    votes: animal.votes + 1,
+                  }),
+                })
+                  .then(response => response.json())
+                  .then(updatedAnimal => {
+                    // Update the vote count on the client side
+                    voteCount.textContent = updatedAnimal.votes;
+                  });
               });
 
-            // Add click event listener to the reset button
-
+              // Add click event listener to the reset button
               resetButton.addEventListener('click', () => {
-                voteCount.textContent = '0';
+                // Reset the vote count on the server
+                fetch(`http://localhost:3000/characters/${character.id}`, {
+                  method: 'PATCH',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    votes: 0,
+                  }),
+                })
+                  .then(response => response.json())
+                  .then(updatedAnimal => {
+                    // Reset the vote count on the client side
+                    voteCount.textContent = updatedAnimal.votes;
+                  });
               });
             });
         }
       });
     }
   });
+
 // Add click event listener to the reset button
 resetButton.addEventListener('click', () => {
-
- // Get all vote count elements and set their text content to zero
-  let voteCounts = document.getElementsByClassName('vote-count');
-  for (let i = 0; i < voteCounts.length; i++) {
-    voteCounts[i].textContent = '0';
-  }
+  // Reset all vote counts on the server
+  fetch('http://localhost:3000/characters', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      votes: 0,
+    }),
+  })
+    .then(response => response.json())
+    .then(updatedAnimals => {
+      // Reset all vote counts on the client side
+      let voteCounts = document.getElementsByClassName('vote-count');
+      for (let i = 0; i < voteCounts.length; i++) {
+        voteCounts[i].textContent = updatedAnimals[i].votes;
+      }
+    });
 });
