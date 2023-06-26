@@ -4,6 +4,11 @@ let animalDetails = document.getElementById('animal-details');
 let resetButton = document.getElementById('reset-button');
 let currentAnimal = null;
 
+// Function to clear the animal details container
+function clearAnimalDetails() {
+  animalDetails.innerHTML = '';
+}
+
 // Fetch data from the server and populate the animal list
 fetch('http://localhost:3000/characters')
   .then(response => response.json())
@@ -21,13 +26,14 @@ fetch('http://localhost:3000/characters')
       animalNameButton.addEventListener('click', () => {
         if (currentAnimal !== character.id) {
           currentAnimal = character.id;
+
+          // Clear the previously displayed animal details
+          clearAnimalDetails();
+
           // Fetch the details of the clicked animal from the server
           fetch(`http://localhost:3000/characters/${character.id}`)
             .then(response => response.json())
             .then(animal => {
-              // Clear the animal details container
-              animalDetails.innerHTML = '';
-
               // Create elements for the animal details
               let animalDetailsContainer = document.createElement('div');
               animalDetailsContainer.classList.add('animal-details-container');
@@ -60,6 +66,7 @@ fetch('http://localhost:3000/characters')
               animalDetailsContainer.appendChild(voteCount);
               animalDetailsContainer.appendChild(voteButton);
               animalDetailsContainer.appendChild(resetButton);
+
               // Append the animal details container to the animal details section
               animalDetails.appendChild(animalDetailsContainer);
 
