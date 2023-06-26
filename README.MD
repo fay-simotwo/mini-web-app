@@ -4,10 +4,8 @@
 CHEPKOECH FAITH
 
 ## Project Description
-```
-The Animal Voting Web Application is a platform designed to engage users in voting for their favorite animals. It allows users to browse through a list of animals, view their details, and cast votes to express their preferences. The application provides an intuitive user interface where animal names are displayed as buttons, and upon clicking a button, users can see the animal's image, name, and the current vote count.
 
-```
+The Animal Voting Web Application is a platform designed to engage users in voting for their favorite animals. It allows users to browse through a list of animals, view their details, and cast votes to express their preferences. The application provides an intuitive user interface where animal names are displayed as buttons, and upon clicking a button, users can see the animal's image, name, and the current vote count.
 
 ## Project SetUp and Instructions
 ### Installation Requirements
